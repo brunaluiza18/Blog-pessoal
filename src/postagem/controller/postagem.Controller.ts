@@ -9,7 +9,7 @@ export class postagemController {
 
     @HttpCode(HttpStatus.OK) // monta a resposa http para front com status 200
     @Get() // indica qual tipo de requesicao esse metodo é executado
-    findA11(): Promise<postagem[]> {
+    async findA11(): Promise<postagem[]> {
         return this.postagemService.findA11( )
 
     }
@@ -24,7 +24,7 @@ export class postagemController {
     @Get('/titulo/:titulo')
     @HttpCode(HttpStatus.OK)
     findByA11Titulo(@Param('titulo')titulo: string): Promise<postagem[]> {
-        return this.postagemService.findA11ByTitulo(titulo)
+        return this.postagemService.findByTitulo(titulo)
     }
 
     @Post()
