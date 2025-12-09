@@ -1,5 +1,6 @@
 import { IsNotEmpty } from "class-validator"
 import { Tema } from "src/tema/entities/tema.entity"
+import { Usuario } from "src/usuario/entities/usuario.entity"
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
 
 @Entity({name: "tb_postagem"}) //incando que a classe é uma entitidade/model
@@ -26,5 +27,10 @@ postagem: postagem[]
     onDelete: "CASCADE"// Garante que ao deletar um Tema, todas as Postagens associadas a ele sejam removidas automaticamente
 })
 tema: Tema // Cria o atributo "tema" na entidade atual onde sera criada uma chave estrangeira (FK) no banco de dados
+@ManyToOne(() => Usuario, (usuario) => usuario.postagem,{
+    onDelete: "CASCADE"
+})
+
+usuario: Usuario
 
 }

@@ -4,6 +4,9 @@ import { postagem } from './postagem/entities/postagem.entity';
 import { PostagemModule } from './postagem/postagem.module';
 import { Tema } from './tema/entities/tema.entity';
 import { TemaModule } from './tema/tema.module';
+import { AuthModule } from './auth/auth.module';
+import { Usuario } from './usuario/entities/usuario.entity';
+import { UsuarioModule } from './usuario/usuario.modules';
 
 //Decorator - Etiqueta de matadados
 @Module({
@@ -15,12 +18,14 @@ import { TemaModule } from './tema/tema.module';
     username: 'root',
     password: 'Bruna1948.',
     database: 'db_blogpessoal',
-    entities: [postagem, Tema],
+    entities: [postagem, Tema, Usuario],
     synchronize: true,
-    logging: true
+   
   }),
   PostagemModule,
-  TemaModule
+  TemaModule,
+  AuthModule,
+  UsuarioModule
 ],
   controllers: [],
   providers: [],
