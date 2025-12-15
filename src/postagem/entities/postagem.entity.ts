@@ -1,36 +1,42 @@
-import { IsNotEmpty } from "class-validator"
-import { Tema } from "../../tema/entities/tema.entity"
-import { Usuario } from "../../usuario/entities/usuario.entity"
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { IsNotEmpty } from "class-validator";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Usuario } from "../../usuario/entities/usuario.entity";
+import { ApiProperty } from "@nestjs/swagger";
+import { Tema } from "src/tema/entities/tema.entity";
 
-@Entity({name: "tb_postagem"}) //incando que a classe é uma entitidade/model
-export class postagem{
+@Entity({ name: "tb_postagens" })   // Indicando que a classe é uma Entitidade/Model
+export class Postagem {
 
-@PrimaryGeneratedColumn() // Chave primaria e auto incremental
- id: number
+    @ApiProperty()
+    @PrimaryGeneratedColumn()   // Chave Primária e Auto Incremental
+    id: number;
 
-@IsNotEmpty() // Validador de objeto
-@Column({ length: 100, nullable: false }) // Regra do MySql - NOT NULL
- titulo: string
+    @ApiProperty()
+    @IsNotEmpty()   // Decorator usado para como Validador de Objetos no corpo da Requisição
+    @Column({ length: 100, nullable: false })   // Tamanho Máximo: 100 | Regra do MySQL - NOT NULL
+    titulo: string;
 
-@IsNotEmpty() // Validador de objeto
-@Column({ length: 1000, nullable: false }) // Regra do MySql - NOT NULL
-texto: string
+    @ApiProperty()
+    @IsNotEmpty()   // Validador de Objeto
+    @Column({ length: 1000, nullable: false })   // Tamanho Máximo: 1000 | Regra do MySQL - NOT NULL
+    texto: string;
 
-@OneToMany(() => postagem, (postagem) => postagem.tema)
-postagem: postagem[]
+    @ApiProperty()
+    @UpdateDateColumn() // Indica que o campo será gerenciado pelo BD
+    data: Date;
 
-@UpdateDateColumn()
-    data: Date 
+    // Indica o lado MUITO do relacionamento, indicando que esse campo se conecta ao campo Postagem da Model Tema
+    @ManyToOne(() => Tema, (tema) => tema.postagem, {
+        onDelete: "CASCADE"
+    })
+    @ApiProperty({ type: () => Tema })
+    tema: Tema
 
-@ManyToOne(() => Tema, (tema) => tema.postagem,{// Define um relacionamento MUITOS para UM (ManyToOne)
-    onDelete: "CASCADE"// Garante que ao deletar um Tema, todas as Postagens associadas a ele sejam removidas automaticamente
-})
-tema: Tema // Cria o atributo "tema" na entidade atual onde sera criada uma chave estrangeira (FK) no banco de dados
-@ManyToOne(() => Usuario, (usuario) => usuario.postagem,{
-    onDelete: "CASCADE"
-})
-
-usuario: Usuario
+    // Indica o lado MUITO do relacionamento, indicando que esse campo se conecta ao campo Postagem da Model Usuario
+    @ManyToOne(() => Usuario, (usuario) => usuario.postagem, {
+        onDelete: "CASCADE"
+    })
+    @ApiProperty({ type: () => Usuario })
+    usuario: Usuario
 
 }

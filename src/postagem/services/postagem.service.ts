@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { DeleteResult, ILike, Repository } from "typeorm";
-import { postagem } from "../entities/postagem.entity";
+import { Postagem } from "../entities/postagem.entity";
 import { InjectRepository } from "@nestjs/typeorm";
 import { TemaService } from "../../tema/services/tema.service";
 
@@ -19,12 +19,12 @@ export class PostagemService {
 
     // Inicia alguns recursos(Repository, Services) para a classe de Serviço funcionar
     constructor(
-        @InjectRepository(postagem) // Aplica a inversão de dependência a nossa classe Repository
-        private postagemRepository: Repository<postagem>,    // Criamos um Objeto da classe Repository voltado para Postagens
+        @InjectRepository(Postagem) // Aplica a inversão de dependência a nossa classe Repository
+        private postagemRepository: Repository<Postagem>,    // Criamos um Objeto da classe Repository voltado para Postagens
         private temaService: TemaService                    // Dentro do Construtor injetamos o temaService para podermos usar seus métodos 
     ) { }
 
-    async findAll(): Promise<postagem[]> {
+    async findAll(): Promise<Postagem[]> {
         return await this.postagemRepository.find({
             relations: {    // Indica que queremos trazer também o relacionamento
                 tema: true,
@@ -33,7 +33,7 @@ export class PostagemService {
         })
     }
 
-    async findById(id: number): Promise<postagem> {
+    async findById(id: number): Promise<Postagem> {
         // Verifica primeiro se a postagem existe
         const postagem = await this.postagemRepository.findOne({
             where: { id },
@@ -52,7 +52,7 @@ export class PostagemService {
         return postagem
     }
 
-    async findByTitulo(titulo: string): Promise<postagem[]> {
+    async findByTitulo(titulo: string): Promise<Postagem[]> {
         // Verifica se existi postagem com o parametro informado
         return await this.postagemRepository.find({
             where: {
@@ -65,7 +65,7 @@ export class PostagemService {
         })
     }
 
-    async create(postagem: postagem): Promise<postagem> {
+    async create(postagem: Postagem): Promise<Postagem> {
         /*
             {
                 "id": 1
@@ -89,7 +89,7 @@ export class PostagemService {
         return await this.postagemRepository.save(postagem);
     }
 
-    async update(postagem: postagem): Promise<postagem> {
+    async update(postagem: Postagem): Promise<Postagem> {
 
         /*
             {
