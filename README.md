@@ -1,24 +1,39 @@
-# Blog Pessoal - API REST 🚀
+# ✍️ Blog Pessoal - Plataforma de Conteúdo
 
-Este é o projeto de Back-end do Blog Pessoal, uma API robusta desenvolvida para gerenciar postagens, temas e utilizadores. O projeto foca em segurança, escalabilidade e boas práticas de desenvolvimento.
+Este projeto consiste em um Blog Pessoal completo, desenvolvido para colocar em prática conceitos avançados de desenvolvimento Web. A aplicação permite a criação, edição e visualização de postagens organizadas por temas, simulando um ambiente real de gerenciamento de conteúdo (CMS).
 
-## 🛠️ Tecnologias Utilizadas
-* **Node.js** com framework **NestJS**
-* **TypeScript**
-* **TypeORM** (Mapeamento Objeto-Relacional)
-* **MySQL** (Base de dados)
-* **Swagger** (Documentação da API)
-* **Bcrypt** (Criptografia de senhas)
+---
 
-## 🔑 Funcionalidades
-- **Autenticação:** Sistema de Login com geração de Token JWT.
-- **Segurança:** Proteção de rotas e armazenamento seguro de palavras-passe.
-- **CRUD Completo:** Criação, Listagem, Atualização e Eliminação de Postagens e Temas.
-- **Relacionamentos:** Implementação de relações One-to-Many entre Temas e Postagens.
+### 🚀 Por que este projeto é relevante?
+Para além do código, este projeto demonstra competências de **Análise e Suporte**:
+- **Gestão de Conteúdo:** Entendimento de como estruturar categorias e postagens de forma lógica.
+- **Resolução de Problemas Técnicos:** Implementação de lógica para filtragem e busca de dados.
+- **Interface Centrada no Usuário:** Foco em uma navegação fluida para quem escreve e para quem lê.
 
-## 📖 Como executar o projeto
-1. Clone o repositório.
-2. Instale as dependências: `npm install`.
-3. Configure a sua base de dados MySQL no ficheiro `.env`.
-4. Execute o projeto: `npm run start:dev`.
-5. Aceda à documentação Swagger em: `http://localhost:4000/swagger`.
+### 🛠️ Tech Stack
+- **Frontend:** HTML5, CSS3, JavaScript.
+- **Integração:** Consumo de APIs para persistência de dados.
+- **Versionamento:** Git para controle de histórico.
+
+---
+
+### ⚙️ Funcionalidades Principais
+- [x] Cadastro e listagem de temas/categorias.
+- [x] Sistema de postagens com integração de dados.
+- [x] Interface responsiva para dispositivos móveis.
+
+---
+
+### ⚙️ Como rodar o projeto
+1. Clone o repositório:
+   ```bash
+   git clone [https://github.com/brunaluiza18/Blog-pessoal.git](https://github.com/brunaluiza18/Blog-pessoal.git)
+Abra o arquivo index.html em seu navegador ou utilize a extensão Live Server do VS Code.
+
+🤝 Entre em contato
+
+Se você busca uma profissional que entende de tecnologia e sabe como facilitar a vida do usuário final, vamos conversar:
+
+LinkedIn: https://www.linkedin.com/in/goncalvesbrunal/
+
+E-mail: brunaluiza.contat@gmail.com
